@@ -2,8 +2,7 @@ name: Deploy to PRD
 
 on:
   release:
-    unpublished:
-      - create
+    types: [ published ] 
 
 jobs:
   get-version:
