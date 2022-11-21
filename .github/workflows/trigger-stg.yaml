@@ -1,0 +1,13 @@
+name: Deploy to STG
+
+on:
+  release:
+    prereleased:
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: do nothing
+        shell: bash
+        run: echo "${{ github.event.release.tag_name }}"
