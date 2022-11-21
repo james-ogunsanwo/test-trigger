@@ -1,4 +1,4 @@
-name: Deploy to STG
+name: Deploy to staging
 
 on:
   release:
