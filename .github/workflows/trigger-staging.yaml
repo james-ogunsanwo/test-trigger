@@ -1,8 +1,9 @@
 name: Deploy to staging
 
 on:
-  release:
-    types: [ prereleased ] 
+  workflow_call:
+  # release:
+  #   types: [prereleased] 
 
 jobs:
   get-version:
