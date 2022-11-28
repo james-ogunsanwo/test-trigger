@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: do nothing
         shell: bash
-        run: echo "hi"
+        run: echo "hi again"
