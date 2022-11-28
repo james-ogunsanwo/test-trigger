@@ -1,7 +1,8 @@
 name: Deploy to production
 
 on:
-  push: 
+  release:
+    types: [prereleased]
 
 jobs:
   get-version:
