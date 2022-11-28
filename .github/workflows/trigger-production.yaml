@@ -1,13 +1,13 @@
 name: Deploy to production
 
 on:
-  release:
-    types: [published]
+  push: 
 
 jobs:
   get-version:
     runs-on: ubuntu-latest
+    environment: test
     steps:
       - name: do nothing
         shell: bash
-        run: echo "${{ github.event.release.tag_name }}"
+        run: echo "hi"
