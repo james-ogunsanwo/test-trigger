@@ -1,9 +1,21 @@
 name: Deploy to staging
 
 on:
-  workflow_call:
-  # release:
-  #   types: [prereleased] 
+  workflow_dispatch:
+    inputs:
+      name:
+        type: choice
+        description: Who to greet
+        options: 
+        - monalisa
+        - cschleiden
+      message:
+        required: true
+      use-emoji:
+        type: boolean
+        description: Include  emojis
+      environment:
+        type: environment
 
 jobs:
   get-version:
