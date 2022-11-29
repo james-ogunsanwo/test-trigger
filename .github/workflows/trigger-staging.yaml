@@ -3,19 +3,8 @@ name: Deploy to staging
 on:
   workflow_dispatch:
     inputs:
-      name:
-        type: choice
-        description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
       message:
         required: true
-      use-emoji:
-        type: boolean
-        description: Include  emojis
-      environment:
-        type: environment
 
 jobs:
   get-version:
@@ -23,4 +12,4 @@ jobs:
     steps:
       - name: do nothing
         shell: bash
-        run: echo "${{ github.event.release.tag_name }}"
+        run: echo "${{ toJson(inputs.message) }}"
