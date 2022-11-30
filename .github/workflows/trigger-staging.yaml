@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: do nothing
         shell: bash
-        run: echo "${{ toJson(inputs.message) }}"
+        run: echo "${{ inputs.message }}"
