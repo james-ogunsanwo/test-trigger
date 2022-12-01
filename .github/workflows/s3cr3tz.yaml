@@ -14,19 +14,14 @@ jobs:
   update-slack:
     runs-on: ubuntu-latest
     needs: [ deploy-to-prd ]
-    if: ${{ always() && failure() || cancelled()}}
-    steps:
-      - name: Post failure to a Slack channel
-        run: |
-          echo "failure"
-          exit 1
-
-  update-test:
-    runs-on: ubuntu-latest
-    needs: [ deploy-to-prd ]
-    if: ${{ always() && success() }}
     steps:
       - name: Post success to a Slack channel
+        if: ${{ always() && success() }}
         run: | 
-         echo "success"
-         exit 0
+          exit 0
+      - name: Post success to a Slack channel
+        if: ${{ always() && failure() || cancelled()}}
+        run: | 
+          exit 0
+
+
