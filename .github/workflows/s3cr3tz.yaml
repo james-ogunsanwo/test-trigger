@@ -14,6 +14,7 @@ jobs:
   update-slack:
     runs-on: ubuntu-latest
     needs: [ deploy-to-prd ]
+    if: ${{ always() }}
     steps:
       - name: Post success to a Slack channel
         if: ${{ always() && success() }}
