@@ -27,6 +27,5 @@ jobs:
           echo "failure"
           exit 1
       - name: Post failure to a Slack channel
-        if: needs.build.result == 'failure'
         run: |
           echo "${{needs.build.result}}"
