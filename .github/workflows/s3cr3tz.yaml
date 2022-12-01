@@ -17,12 +17,12 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Post success to a Slack channel
-        if: ${{ success() }}
+        if: success()
         run: | 
          echo "success"
          exit 0
       - name: Post failure to a Slack channel
-        if: ${{ failure() }}
+        if: failure()
         run: |
           echo "failure"
           exit 1
