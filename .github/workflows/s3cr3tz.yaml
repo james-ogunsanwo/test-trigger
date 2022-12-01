@@ -4,6 +4,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  deploy-to-prd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post success to a Slack channel
+        run: | 
+          exit 1
+
    update-slack:
     runs-on: ubuntu-latest
     needs: [ deploy-to-prd ]
