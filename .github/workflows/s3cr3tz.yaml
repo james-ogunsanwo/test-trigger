@@ -21,6 +21,6 @@ jobs:
         with:
           channel-id: '#slackbot-testing'
          
-          slack-message: "Deployment to PRD ${{ steps.deploy-to-prd.conclusion }}  ${{steps.deploy-to-prd.conclusion == 'success' && ':white_check_mark:' ||  ':rotating_light:' }}"
+          slack-message: "Deployment to PRD ${{ needs.deploy-to-prd.conclusion }}  ${{needs.deploy-to-prd.conclusion == 'success' && ':white_check_mark:' ||  ':rotating_light:' }}"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
