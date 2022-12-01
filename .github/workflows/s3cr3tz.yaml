@@ -17,7 +17,7 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Post success to a Slack channel
-        if: success()
+        if: needs.build.result == 'success'
         run: | 
          echo "success"
          exit 0
