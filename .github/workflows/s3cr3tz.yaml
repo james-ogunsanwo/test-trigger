@@ -22,7 +22,7 @@ jobs:
          echo "success"
          exit 0
       - name: Post failure to a Slack channel
-        if: failure()
+        if: needs.build.result == 'failure'
         run: |
           echo "failure"
           exit 1
