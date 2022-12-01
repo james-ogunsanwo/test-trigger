@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Post success to a Slack channel
         run: | 
-          exit 0
+          exit 1
   
   update-test:
     runs-on: ubuntu-latest
