@@ -11,31 +11,15 @@ jobs:
         run: | 
           exit 1
    
-  success-notification:
+  slack-notification:
     runs-on: ubuntu-latest
     needs: [ deploy-to-prd ]
-    if: ${{ always() && success() }}
+    if: ${{ always() }}
     steps:
-        - name: Post success to a Slack channel
-          run: | 
-            exit 1
-
-  failed-notification:
-    runs-on: ubuntu-latest
-    needs: [ deploy-to-prd ]
-    if: ${{ always() && failure() }}
-    steps:
-          - name: Post success to a Slack channel
-            run: | 
-              exit 1
-  
-  cancelled-notification:
-    runs-on: ubuntu-latest
-    needs: [ deploy-to-prd ]
-    if: ${{ always() && cancelled() }}
-    steps:
-        - name: Post success to a Slack channel
-          run: | 
-            exit 1
-
-    
+      - name: Post success to a Slack channel
+        uses: slackapi/slack-github-action@v1.14.0
+        with:
+          channel-id: '#slackbot-testing'
+          slack-message: 'Deployment to PRD ${{ steps.deploy-to-prd.outcome }} ${{ steps.deploy-to-prd.outcome ? == "success" ? :white_check_mark: : :rotating_light: }}'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
