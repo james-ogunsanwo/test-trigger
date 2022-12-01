@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Post success to a Slack channel
         run: | 
-          exit 1
+          exit 0
    
   slack-notification:
     runs-on: ubuntu-latest
