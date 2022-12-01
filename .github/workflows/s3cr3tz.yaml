@@ -1,19 +1,21 @@
-name: Show Me the S3cr3tz
+name: test stuff
 
 on:
   workflow_dispatch:
 
 jobs:
-  debug:
-    name: Debug
+   update-slack:
     runs-on: ubuntu-latest
-
+    needs: [ deploy-to-prd ]
+    if: ${{ always() }}
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Set up secret file
-      env:
-        DEBUG_PASSWORD: ${{ secrets.DEBUG_PASSWORD }}
-      run: |
-        echo ${{secrets.DEBUG_PASSWORD}} | sed 's/./& /g'
+      - name: Post success to a Slack channel
+        if: ${{ success() }}
+        run: | 
+         echo "success"
+         exit 0
+      - name: Post failure to a Slack channel
+        if: ${{ failure() }}
+        run: |
+          echo "failure"
+          exit 1
